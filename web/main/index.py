@@ -252,15 +252,14 @@ def pic_handle(request):
         all_path = os.path.join(os.path.dirname(os.path.dirname(__file__)), pic_path)
         if not os.path.exists(all_path):
             os.mkdir(all_path)
-        print(request)
-        print(request.FILES.get("fff"))
-        obj = request.FILES.get("fff")
-        print(obj.name, obj.chunks(), type(obj.chunks()))
-
+        obj = request.FILES.get('fff')
+        print(obj,'---------------------')
+        print(obj.name,'~~~~~~~~~~~~~~~~~~~~~~~')
         f = open(os.path.join(all_path, obj.name), "wb")
         for chunk in obj.chunks():
             f.write(chunk)
-
+            print('++++++++++++++++++++++')
+        print(os.path.join("/%s" % pic_path,obj.name),'$$$$$$$$$$$$$$$$$$')
         return HttpResponse(os.path.join("/%s" % pic_path,obj.name))
 
     return render(request,"test/test.html")

@@ -21,13 +21,14 @@ def create_weibo(request):
         timestamp = time.time()
         print(time.time())
         dict_data =  request.POST.get("data_dict")
+        dict_data = json.loads(dict_data)
         user_id = request.session['userinfo']['data'][0]["user_id__id"]
 
         perm = 0
         wb_type = dict_data.get("wb_type")
         text = dict_data.get("text")
-        pictures_link_id = dict_data.get("dict_data")
-
+        pictures_link_id = dict_data.get("pictures_link_id")
+        # pictures_link_id = json.loads(pictures_link_id)
         # test 数据
         # pic_path = "statics/%s/%s" %(user_id,timestamp)
         # if os.path.exists(os.path.join(os.path.dirname(os.path.dirname(__file__)),pic_path))
