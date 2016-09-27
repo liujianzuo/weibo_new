@@ -272,7 +272,6 @@ def pic_handle(request):
             path_list.append(os.path.join("/%s" % pic_path, obj.name))
 
         return HttpResponse(json.dumps(path_list))
-
     return render(request,"test/test.html")
 
 
